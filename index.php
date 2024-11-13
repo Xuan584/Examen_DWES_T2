@@ -1,6 +1,7 @@
 <?php
 // TODO Importar las clases
-
+require 'model/Articulo.php';
+require 'model/Bebida.php';
 // Array asociativo del menú
 $menu = [
     new Articulo("Ensalada César", 8.50, true, "Entrante"),
@@ -35,15 +36,19 @@ $ubicaciones = [
 $pedido = ["Ensalada César", "Pizza Margarita", "Café", "Gambas"];
 
 // TODO Filtrar platos por disponibilidad, guardando en variable $disponibles
-$disponibles =
+$disponibles = array_filter($menu, function($articulo) {
+    return $articulo->disponibilidad == true;
+});
 
 //////////////////////////////
 //        FUNCIONES         //
 //////////////////////////////
 
 // TODO Función para imprimir una lista de artículos con nombre y precio
-function imprimirListaArticulos($articulos){
-
+function imprimirListaArticulos($articulos) {
+    foreach($articulos as $articulo) {
+        echo "<li>Nombre: " . $articulo->nombre . " - Precio: $" . $articulo->precio . "</li>";
+    }
 }
 
 // TODO Función para imprimir un pedido
@@ -53,7 +58,7 @@ function imprimirPedido($pedido, $menu) {
 
 // TODO Función para imprimir las ubicaciones
 function imprimirUbicaciones($ubicaciones) {
-
+    
 }
 
 ?>
