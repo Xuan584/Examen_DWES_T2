@@ -72,12 +72,12 @@ function imprimirPedido($pedido, $menu) {
             $total += $articulo->precio;
         } else {
             echo "<td>" . $nombrePedido . "</td>";
-            echo "<td>No disponible</td>";
+            echo "<td>No encontrado en el menu</td>";
         }
         echo "</tr>";
     }
 
-    echo "<tr><td>Total</td><td>" . $total . "€Impr</td></tr>";
+    echo "<tr><td><strong>Total</strong></td><td><strong>" . $total . "€</strong></td></tr>";
     echo "</table>";
 }
 
@@ -87,10 +87,7 @@ function imprimirPedido($pedido, $menu) {
 // TODO Función para imprimir las ubicaciones
 function imprimirUbicaciones($ubicaciones) {
     foreach($ubicaciones as $nombre => $datos) {
-        echo "<li>$nombre<br>";
-        echo "Dirección: " . $datos['direccion'] . "<br>";
-        echo "Teléfono: " . $datos['telefono'] . "<br>";
-        echo "Horario: " . $datos['horario'] . "</li><br>";
+        echo "<li><strong>$nombre:</strong>   $datos[direccion]. ". "Teléfono: " . "$datos[telefono]. "."Horario: " . "$datos[horario]". "</li>";
     }
 }
 
