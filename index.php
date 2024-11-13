@@ -53,12 +53,18 @@ function imprimirListaArticulos($articulos) {
 
 // TODO Función para imprimir un pedido
 function imprimirPedido($pedido, $menu) {
-
+    
 }
+
 
 // TODO Función para imprimir las ubicaciones
 function imprimirUbicaciones($ubicaciones) {
-    
+    foreach($ubicaciones as $nombre => $datos) {
+        echo "<li>$nombre<br>";
+        echo "Dirección: " . $datos['direccion'] . "<br>";
+        echo "Teléfono: " . $datos['telefono'] . "<br>";
+        echo "Horario: " . $datos['horario'] . "</li><br>";
+    }
 }
 
 ?>
