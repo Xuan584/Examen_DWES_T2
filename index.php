@@ -53,8 +53,35 @@ function imprimirListaArticulos($articulos) {
 
 // TODO Función para imprimir un pedido
 function imprimirPedido($pedido, $menu) {
-    
+    $menuMap = [];
+    foreach($menu as $articulo) {
+        $menuMap[$articulo->nombre] = $articulo;
+    }
+
+    echo "<table border='1'>";
+    echo "<tr><th>Nombre</th><th>Precio</th></tr>";
+
+    $total = 0; 
+
+    foreach($pedido as $nombrePedido) {
+        echo "<tr>";
+        if (isset($menuMap[$nombrePedido])) {
+            $articulo = $menuMap[$nombrePedido];
+            echo "<td>" . $articulo->nombre . "</td>";
+            echo "<td>$" . $articulo->precio . "</td>";
+            $total += $articulo->precio;
+        } else {
+            echo "<td>" . $nombrePedido . "</td>";
+            echo "<td>No disponible</td>";
+        }
+        echo "</tr>";
+    }
+
+    echo "<tr><td>Total</td><td>" . $total . "€Impr</td></tr>";
+    echo "</table>";
 }
+
+
 
 
 // TODO Función para imprimir las ubicaciones
